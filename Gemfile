@@ -9,6 +9,11 @@ gem "rails", "~> 7.0.4"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
+#debuggeri
+group :development, :test do
+  gem 'pry-byebug'
+end
+
 # Use sqlite3 as the database for Active Record
 #gem "sqlite3", "~> 1.4"
 group :development, :test do
