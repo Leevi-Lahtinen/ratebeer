@@ -1,13 +1,13 @@
 <h2>List of ratings</h2>
-<%=link_to "New rating", new_rating_path %>
 
 <ul>
  <% @ratings.each do |rating| %>
-   <li> <%=rating.beer.name%> <%=rating.score %>  <%= button_to 'delete', rating_path(rating), method: :delete, data: {turbo_confirm: 'Are you sure?'} %></li>
+   <li> <%=rating.beer.name%> score: <%=rating.score %> rated by: <%=link_to rating.user.username  %> </li>
  <% end %>
 <ul>
 
-<p>Number of ratings: <%= @ratings.count %></p>
+<br>
+<%=link_to "New rating", new_rating_path %>
 
 
 

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<ul>
+ <% @membership.each do |membership| %>
+   <li> <strong>Club:</strong> <%=membership.beer_club.name%> <strong>Member:</strong> <%=membership.user.username  %> </li>
+ <% end %>
+<ul>
+
+<div>
+  <%= link_to "Edit this membership", edit_membership_path(@membership) %> |
+  <%= link_to "Back to memberships", memberships_path %>
+
+  <%= button_to "Delete this membership", @memberships, method: :delete %>
+</div>

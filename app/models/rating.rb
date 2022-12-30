@@ -1,10 +1,16 @@
 class Rating < ApplicationRecord
-   belongs_to :beer
+  belongs_to :beer
+  belongs_to :user
 
-   def to_s
-      "tekstiesitys"
-    end
-    def new
-      @rating = Rating.new
-    end
+  validates :score, numericality: { greater_than_or_equal_to: 1,
+                                    less_than_or_equal_to: 50,
+                                    only_integer: true }
+
+  def to_s
+    "tekstiesitys"
+  end
+
+  def new
+    @rating = Rating.new
+  end
 end

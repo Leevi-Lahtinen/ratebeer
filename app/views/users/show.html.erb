@@ -1,0 +1,39 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @user %>
+
+<% if @user.ratings.empty? %>
+  User has not yet rated anything!
+  <% else %>
+  Has made <%= @user.ratings.count%> <%="rating".pluralize(@user.ratings.count)%> with an average of <%=@user.average_rating %>
+  <% end %>
+
+<p><strong>Clubs user is a part of:</strong>
+<% @user.beer_clubs.each do |beer_club| %>
+  <li> <%= beer_club.name %> </li>
+<% end %>
+
+<br>
+<br>
+<strong>Ratings:</strong>
+<ul>
+  <% @user.ratings.each do |rating| %>
+    <li><%= "#{rating.to_s}" %>
+      <% if @user == current_user %>
+        <%= link_to "Delete", rating, data: {turbo_method: :delete} %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<br>
+
+<div>
+  <% if @user == current_user %>
+  <%= link_to "Edit this user", edit_user_path(@user) %>
+  <p>
+  <%= button_to "Destroy this user", @user, method: :delete %>
+  <% end %>
+  <p>
+  <%= link_to "Back to users", users_path %>
+
+</div>
